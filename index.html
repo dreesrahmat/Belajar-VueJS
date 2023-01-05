@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Belajar Vue Js</title>
+   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+   <div id="vueApp">
+      <input type="text" v-model="subject">
+      <h3>Belajar {{ subject }}</h3>
+      <!-- <p>Number : {{ number }}</p> -->
+      <!-- <button v-on:click="makeItFun()">Make It Fun!</button> -->
+      <button @click="makeItFun()">Make It Fun!</button><!-- Atau bisa juga menggunakan tanda @ untuk mengganti v-on: -->
+      <button @click="check()">Check Subject</button>
+      <p>Nilai : {{ score }}</p>
+   </div>
+
+   <script>
+      // Variabel untuk menyimpan method data dan mounted
+      const sample = {
+         // Method untuk menyimpan properti subject dan number
+         data() {
+            return {
+               subject : 'Vuejs',
+               // number : 0
+               score : 0
+            }
+         },
+         // Method yang menjalankan sebuah fungsi untuk mengecek dan mengubah nilai setiap waktu 500 milisecond 
+         // mounted() {
+         //    setInterval(() => {
+         //       this.number++
+         //    }, 500)
+         // }
+
+         methods: {
+            // Method ini akan dijalankan ketika dipanggil di html dengan nama v-on:click / @click
+            makeItFun() {
+               this.subject = this.subject + " !!!!"
+            },
+            
+            // Untuk mengecek apakah inputan sesuai dengan apa yang di harapkan. Jika iya maka akan memberikan nilai 100 namun jika tidak -50
+            check() {
+               if (this.subject === 'VueJS')
+                  this.score = 100
+               else 
+                  this.score = -50
+               
+            }
+         }
+      }
+
+      // Kode di atas akan dibuat dan dipasang (mount) pada element HTML dengan ID '#vueApp'
+      Vue.createApp(sample).mount('#vueApp')
+   </script>
+</body>
+</html>
