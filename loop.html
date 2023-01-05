@@ -1,27 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+   <!-- Menetapkan charset yang digunakan oleh dokumen -->
    <meta charset="UTF-8">
+   <!-- Menetapkan kompatibilitas dengan browser Internet Explorer -->
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <!-- Menetapkan skala awal dari viewport pada perangkat mobile -->
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <!-- Judul tab browser -->
    <title>Belajar Vue Js</title>
+   <!-- Memasukkan file script Vue -->
    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 </head>
 <body>
+   <!-- Element HTML dengan ID 'vueApp' merupakan tempat aplikasi Vue akan dibuat dan dipasang -->
    <div id="vueApp">
+      <!-- Menampilkan teks yang diinterpolasi dengan mengakses properti 'subject' pada objek data -->
       <h3>Belajar {{ subject }}</h3>
 
+      <!-- Directive 'v-for' akan melakukan perulangan pada array 'subjects' -->
       <ol>
          <li v-for="subject in subjects" :key="subject.title">
+            <!-- Menampilkan title dan type dari masing-masing subject -->
             {{ subject.title }} - {{ subject.type }}
          </li>
       </ol>
    </div>
 
    <script>
-      // Variabel untuk menyimpan method data dan mounted
+      // Objek 'sample' yang berisi method data
       const sample = {
-         // Method untuk menyimpan properti subject dan number
+         // Method untuk menyimpan array subjects
          data() {
             return {
                subjects : [
@@ -33,7 +42,7 @@
          }
       }
 
-      // Kode di atas akan dibuat dan dipasang (mount) pada element HTML dengan ID '#vueApp'
+      // Membuat dan memasang aplikasi Vue pada element HTML dengan ID '#vueApp'
       Vue.createApp(sample).mount('#vueApp')
    </script>
 </body>
