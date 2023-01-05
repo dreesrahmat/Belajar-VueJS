@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Belajar Vue Js</title>
+   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+   <div id="vueApp">
+      <h3>Belajar {{ subject }}</h3>
+
+      <ol>
+         <li v-for="subject in subjects" :key="subject.title">
+            {{ subject.title }} - {{ subject.type }}
+         </li>
+      </ol>
+   </div>
+
+   <script>
+      // Variabel untuk menyimpan method data dan mounted
+      const sample = {
+         // Method untuk menyimpan properti subject dan number
+         data() {
+            return {
+               subjects : [
+                  {title: 'Javascript', type: 'Native'},
+                  {title: 'Vue', type: 'Framework'},
+                  {title: 'React', type: 'Framework'},
+               ]
+            }
+         }
+      }
+
+      // Kode di atas akan dibuat dan dipasang (mount) pada element HTML dengan ID '#vueApp'
+      Vue.createApp(sample).mount('#vueApp')
+   </script>
+</body>
+</html>
