@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Belajar Vue Js</title>
+   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+   <!-- Element HTML dengan ID 'vueApp' merupakan tempat aplikasi Vue akan dibuat dan dipasang -->
+   <div id="vueApp">
+      <!-- Menampilkan teks yang diinterpolasi dengan mengakses properti 'subject' pada objek data -->
+      <h3>Belajar Vue Js</h3>
+
+      <!-- Directive 'v-for' akan melakukan perulangan pada array 'subjects' -->
+      <ol v-if="status">
+         <li v-for="subject in subjects" :key="subject.title">
+            <!-- Menampilkan title dan type dari masing-masing subject -->
+            {{ subject.title }} - {{ subject.type }}
+         </li>
+      </ol>
+      <p v-else>
+         Tidak Ada List Yang Perlu Di Perlihatkan...
+      </p>
+   </div>
+
+   <script>
+      // Objek 'sample' yang berisi method data
+      const sample = {
+         // Method untuk menyimpan array subjects
+         data() {
+            return {
+               subjects : [
+                  {title: 'Javascript', type: 'Native'},
+                  {title: 'Vue', type: 'Framework'},
+                  {title: 'React', type: 'Framework'},
+               ],
+               status : true
+            }
+         }
+      }
+
+      // Membuat dan memasang aplikasi Vue pada element HTML dengan ID '#vueApp'
+      Vue.createApp(sample).mount('#vueApp')
+   </script>
+</body>
+</html>
